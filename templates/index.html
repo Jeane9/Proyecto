@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">      
+    <style>
+        body{
+            background-color: #eee;
+        }
+        .item{
+            background-color: #fff;
+            margin-bottom: 30px;
+            border: solid 1px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            color: #000;
+            text-decoration: none;
+        }
+        .item:hover{
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+            text-decoration: none;
+        }
+        .item:active{
+            transform:scale(0.95,0.95);
+        }
+        .item .icono{
+            font-size: 40px;
+            text-align: center;
+            margin: 10px 0;
+    
+        }
+        .item .nom{
+            text-align: center;
+            font-size: 15px;
+            padding-bottom: 20px;
+        }
+    
+         .btn-logout{
+          float: right;
+        }
+    
+     </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url(); ?>admin/blog">Imagenes<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-danger btn-logout" action ='/salir'><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</button>
+      </nav>
+      <br>
+      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/home.css?v=1.4">
+
+    <div class="container">
+        <div id="content" style="margin-top:2em">
+            <h1 class="page-title">Predecir PreCancer</h1>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <form id="upload-file" method="post" enctype="multipart/form-data">
+                        <label for="imageUpload" class="upload-label item">
+                            <div class="icono">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="nom">Buscar</div>
+                        </label>
+                        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+                    </form>
+
+                    <button type="button" class="btn btn-primary btn-lg item col-sm" id="btn-predict">
+                        <div class="icono">
+                            <i class="fa fa-sticky-note"></i>
+                        </div>
+                        <div class="nom">Predecir</div>
+                    </button>
+                </div>
+                <div class="col-sm-3">
+                    <div class="image-section" style="display:none;">
+                        <div class="img-preview">
+                            <div id="imagePreview">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Resultado</th>
+                          </tr>
+                        </thead>
+                        <tbody class="lista">
+                            <tr>
+                                <th>
+                                       <div class="loader" style="display:none;">
+                                        <div class="nom"></div>
+                                        </div>
+                                    <h3 id="result">
+                                    <span> </span>
+                                    </h3>
+                                </th>
+                            </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>    
+</footer>
+
+</html>
